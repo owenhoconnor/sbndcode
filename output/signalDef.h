@@ -1,12 +1,12 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Fri Jan 30 16:11:43 2026 by ROOT version 6.38.00
+// Tue Feb  3 21:23:52 2026 by ROOT version 6.38.00
 // from TTree tree/Output TTree
 // found on file: hyperonAnalysisSIG.root
 //////////////////////////////////////////////////////////
 
-#ifndef testingSIG_h
-#define testingSIG_h
+#ifndef signalDef_h
+#define signalDef_h
 
 #include <TROOT.h>
 #include <TChain.h>
@@ -16,7 +16,7 @@
 #include "vector"
 #include "vector"
 
-class testingSIG {
+class signalDef {
 public :
    TTree          *fChain;   //!pointer to the analyzed TTree or TChain
    Int_t           fCurrent; //!current Tree number in a TChain
@@ -91,8 +91,8 @@ public :
    TBranch        *b_TrackEndPositionY;   //!
    TBranch        *b_TrackEndPositionZ;   //!
 
-   testingSIG(TTree *tree=0);
-   virtual ~testingSIG();
+   signalDef(TTree *tree=0);
+   virtual ~signalDef();
    virtual Int_t    Cut(Long64_t entry);
    virtual Int_t    GetEntry(Long64_t entry);
    virtual Long64_t LoadTree(Long64_t entry);
@@ -104,8 +104,8 @@ public :
 
 #endif
 
-#ifdef testingSIG_cxx
-testingSIG::testingSIG(TTree *tree) : fChain(0) 
+#ifdef signalDef_cxx
+signalDef::signalDef(TTree *tree) : fChain(0) 
 {
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
@@ -121,19 +121,19 @@ testingSIG::testingSIG(TTree *tree) : fChain(0)
    Init(tree);
 }
 
-testingSIG::~testingSIG()
+signalDef::~signalDef()
 {
    if (!fChain) return;
    delete fChain->GetCurrentFile();
 }
 
-Int_t testingSIG::GetEntry(Long64_t entry)
+Int_t signalDef::GetEntry(Long64_t entry)
 {
 // Read contents of entry.
    if (!fChain) return 0;
    return fChain->GetEntry(entry);
 }
-Long64_t testingSIG::LoadTree(Long64_t entry)
+Long64_t signalDef::LoadTree(Long64_t entry)
 {
 // Set the environment to read one entry
    if (!fChain) return -5;
@@ -146,7 +146,7 @@ Long64_t testingSIG::LoadTree(Long64_t entry)
    return centry;
 }
 
-void testingSIG::Init(TTree *tree)
+void signalDef::Init(TTree *tree)
 {
    // The Init() function is called when the selector needs to initialize
    // a new tree or chain. Typically here the branch addresses and branch
@@ -217,7 +217,7 @@ void testingSIG::Init(TTree *tree)
    Notify();
 }
 
-bool testingSIG::Notify()
+bool signalDef::Notify()
 {
    // The Notify() function is called when a new file is opened. This
    // can be for a new TTree in a TChain. It is normally not necessary to make changes
@@ -227,18 +227,18 @@ bool testingSIG::Notify()
    return true;
 }
 
-void testingSIG::Show(Long64_t entry)
+void signalDef::Show(Long64_t entry)
 {
 // Print contents of entry.
 // If entry is not specified, print current entry
    if (!fChain) return;
    fChain->Show(entry);
 }
-Int_t testingSIG::Cut(Long64_t entry)
+Int_t signalDef::Cut(Long64_t entry)
 {
 // This function may be called from Loop.
 // returns  1 if entry is accepted.
 // returns -1 otherwise.
    return 1;
 }
-#endif // #ifdef testingSIG_cxx
+#endif // #ifdef signalDef_cxx
