@@ -1,6 +1,6 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Tue Feb  3 21:23:52 2026 by ROOT version 6.38.00
+// Fri Feb 13 15:25:29 2026 by ROOT version 6.38.00
 // from TTree tree/Output TTree
 // found on file: hyperonAnalysisSIG.root
 //////////////////////////////////////////////////////////
@@ -49,6 +49,9 @@ public :
    vector<float>   *DistanceToRecoVertex;
    vector<float>   *nuScores;
    vector<float>   *trackScores;
+   vector<float>   *muonTrackScores;
+   vector<float>   *protonTrackScores;
+   vector<float>   *pionTrackScores;
    vector<float>   *NeutrinoNuScores;
    vector<float>   *TrackStartPositionX;
    vector<float>   *TrackStartPositionY;
@@ -56,6 +59,9 @@ public :
    vector<float>   *TrackEndPositionX;
    vector<float>   *TrackEndPositionY;
    vector<float>   *TrackEndPositionZ;
+   vector<int>     *pfpTrackPDG;
+   vector<int>     *pfpShowerPDG;
+   vector<int>     *pfpPDG;
 
    // List of branches
    TBranch        *b_eventID;   //!
@@ -83,6 +89,9 @@ public :
    TBranch        *b_DistanceToRecoVertex;   //!
    TBranch        *b_nuScores;   //!
    TBranch        *b_trackScores;   //!
+   TBranch        *b_muonTrackScores;   //!
+   TBranch        *b_protonTrackScores;   //!
+   TBranch        *b_pionTrackScores;   //!
    TBranch        *b_NeutrinoNuScores;   //!
    TBranch        *b_TrackStartPositionX;   //!
    TBranch        *b_TrackStartPositionY;   //!
@@ -90,6 +99,9 @@ public :
    TBranch        *b_TrackEndPositionX;   //!
    TBranch        *b_TrackEndPositionY;   //!
    TBranch        *b_TrackEndPositionZ;   //!
+   TBranch        *b_pfpTrackPDG;   //!
+   TBranch        *b_pfpShowerPDG;   //!
+   TBranch        *b_pfpPDG; //!
 
    signalDef(TTree *tree=0);
    virtual ~signalDef();
@@ -169,6 +181,9 @@ void signalDef::Init(TTree *tree)
    DistanceToRecoVertex = 0;
    nuScores = 0;
    trackScores = 0;
+   muonTrackScores = 0;
+   protonTrackScores = 0;
+   pionTrackScores = 0;
    NeutrinoNuScores = 0;
    TrackStartPositionX = 0;
    TrackStartPositionY = 0;
@@ -176,6 +191,9 @@ void signalDef::Init(TTree *tree)
    TrackEndPositionX = 0;
    TrackEndPositionY = 0;
    TrackEndPositionZ = 0;
+   pfpTrackPDG = 0;
+   pfpShowerPDG = 0;
+   pfpPDG = 0;
    // Set branch addresses and branch pointers
    if (!tree) return;
    fChain = tree;
@@ -207,6 +225,9 @@ void signalDef::Init(TTree *tree)
    fChain->SetBranchAddress("DistanceToRecoVertex", &DistanceToRecoVertex, &b_DistanceToRecoVertex);
    fChain->SetBranchAddress("nuScores", &nuScores, &b_nuScores);
    fChain->SetBranchAddress("trackScores", &trackScores, &b_trackScores);
+   fChain->SetBranchAddress("muonTrackScores", &muonTrackScores, &b_muonTrackScores);
+   fChain->SetBranchAddress("protonTrackScores", &protonTrackScores, &b_protonTrackScores);
+   fChain->SetBranchAddress("pionTrackScores", &pionTrackScores, &b_pionTrackScores);
    fChain->SetBranchAddress("NeutrinoNuScores", &NeutrinoNuScores, &b_NeutrinoNuScores);
    fChain->SetBranchAddress("TrackStartPositionX", &TrackStartPositionX, &b_TrackStartPositionX);
    fChain->SetBranchAddress("TrackStartPositionY", &TrackStartPositionY, &b_TrackStartPositionY);
@@ -214,6 +235,9 @@ void signalDef::Init(TTree *tree)
    fChain->SetBranchAddress("TrackEndPositionX", &TrackEndPositionX, &b_TrackEndPositionX);
    fChain->SetBranchAddress("TrackEndPositionY", &TrackEndPositionY, &b_TrackEndPositionY);
    fChain->SetBranchAddress("TrackEndPositionZ", &TrackEndPositionZ, &b_TrackEndPositionZ);
+   fChain->SetBranchAddress("pfpTrackPDG", &pfpTrackPDG, &b_pfpTrackPDG);
+   fChain->SetBranchAddress("pfpShowerPDG", &pfpShowerPDG, &b_pfpShowerPDG);
+   fChain->SetBranchAddress("pfpPDG", &pfpPDG, &b_pfpPDG);
    Notify();
 }
 
