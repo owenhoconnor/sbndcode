@@ -42,7 +42,7 @@ public :
    Int_t           trackCount;
    Int_t           showerCount;
    vector<int>     *TrackIDs;
-   vector<float>   *TrackLengths;
+   vector<float>   *trackLengths;
    Float_t         RecoVertexX;
    Float_t         RecoVertexY;
    Float_t         RecoVertexZ;
@@ -82,7 +82,7 @@ public :
    TBranch        *b_trackCount;   //!
    TBranch        *b_showerCount;   //!
    TBranch        *b_TrackIDs;   //!
-   TBranch        *b_TrackLengths;   //!
+   TBranch        *b_trackLengths;   //!
    TBranch        *b_RecoVertexX;   //!
    TBranch        *b_RecoVertexY;   //!
    TBranch        *b_RecoVertexZ;   //!
@@ -177,7 +177,7 @@ void signalDef::Init(TTree *tree)
    vertexSize = 0;
    daughterSize = 0;
    TrackIDs = 0;
-   TrackLengths = 0;
+   trackLengths = 0;
    DistanceToRecoVertex = 0;
    nuScores = 0;
    trackScores = 0;
@@ -218,7 +218,7 @@ void signalDef::Init(TTree *tree)
    fChain->SetBranchAddress("trackCount", &trackCount, &b_trackCount);
    fChain->SetBranchAddress("showerCount", &showerCount, &b_showerCount);
    fChain->SetBranchAddress("TrackIDs", &TrackIDs, &b_TrackIDs);
-   fChain->SetBranchAddress("TrackLengths", &TrackLengths, &b_TrackLengths);
+   fChain->SetBranchAddress("trackLengths", &trackLengths, &b_trackLengths);
    fChain->SetBranchAddress("RecoVertexX", &RecoVertexX, &b_RecoVertexX);
    fChain->SetBranchAddress("RecoVertexY", &RecoVertexY, &b_RecoVertexY);
    fChain->SetBranchAddress("RecoVertexZ", &RecoVertexZ, &b_RecoVertexZ);
