@@ -16,7 +16,7 @@
 #include "TMVA/Tools.h"
 #include "TMVA/TMVAGui.h"
  
-int TMVAClassification( TString myMethodList = "" )
+int TMVAClassification_5( TString myMethodList = "" )
 {
    // The explicit loading of the shared libTMVA is done in TMVAlogon.C, defined in .rootrc
    // if you use your private .rootrc, or run from a different directory, please copy the
@@ -129,8 +129,8 @@ int TMVAClassification( TString myMethodList = "" )
  
    // Read training and test data
    // (it is also possible to use ASCII format as input -> see TMVA Users Guide)
-   TString signalInputFile = "./prepSig.root";
-   TString backgroundInputFile = "./prepBkg.root";
+   TString signalInputFile = "../prepSig.root";
+   TString backgroundInputFile = "../prepBkg.root";
    std::unique_ptr<TFile> signalInput{TFile::Open(signalInputFile)};
    std::unique_ptr<TFile> backgroundInput{TFile::Open(backgroundInputFile)};
    if (!signalInput || signalInput->IsZombie()) {
@@ -147,7 +147,7 @@ int TMVAClassification( TString myMethodList = "" )
    TTree *backgroundTree     = (TTree*)backgroundInput->Get("bkgTree");
  
    // Create a ROOT output file where TMVA will store ntuples, histograms, etc.
-   TString outfileName("TMVAC.root");
+   TString outfileName("TMVAC_5.root");
    std::unique_ptr<TFile> outputFile{TFile::Open(outfileName, "RECREATE")};
    if (!outputFile || outputFile->IsZombie()) {
       throw std::runtime_error("ERROR: could not open output file");
@@ -179,11 +179,11 @@ int TMVAClassification( TString myMethodList = "" )
    // [all types of expressions that can also be parsed by TTree::Draw( "expression" )]
    // 4 lengths
    dataloader->AddVariable( "track1Length", 'F' );
-   dataloader->AddVariable( "track2Length", 'F');
-   dataloader->AddVariable( "track3Length", 'F');
+   //dataloader->AddVariable( "track2Length", 'F');
+   //dataloader->AddVariable( "track3Length", 'F');
    dataloader->AddVariable("shower1Length", 'F');
 
-   // 12 start positions (4 x 3)
+ /*  // 12 start positions (4 x 3)
    dataloader->AddVariable("track1StartPosX", 'F');
    dataloader->AddVariable("track1StartPosY", 'F');
    dataloader->AddVariable("track1StartPosZ", 'F');
@@ -196,41 +196,41 @@ int TMVAClassification( TString myMethodList = "" )
    dataloader->AddVariable("shower1StartPosX", 'F');
    dataloader->AddVariable("shower1StartPosY", 'F');
    dataloader->AddVariable("shower1StartPosZ", 'F');
-
+*/
    // 12 start directions (4 x 3)
    dataloader->AddVariable("track1StartDirX", 'F');
    dataloader->AddVariable("track1StartDirY", 'F');
-   dataloader->AddVariable("track1StartDirZ", 'F');
-   dataloader->AddVariable("track2StartDirX", 'F');
-   dataloader->AddVariable("track2StartDirY", 'F');
-   dataloader->AddVariable("track2StartDirZ", 'F');
-   dataloader->AddVariable("track3StartDirX", 'F');
-   dataloader->AddVariable("track3StartDirY", 'F');
-   dataloader->AddVariable("track3StartDirZ", 'F');
-   dataloader->AddVariable("shower1DirX", 'F');
-   dataloader->AddVariable("shower1DirY", 'F');
-   dataloader->AddVariable("shower1DirZ", 'F');
+   //dataloader->AddVariable("track1StartDirZ", 'F');
+   //dataloader->AddVariable("track2StartDirX", 'F');
+   //dataloader->AddVariable("track2StartDirY", 'F');
+   //dataloader->AddVariable("track2StartDirZ", 'F');
+   //dataloader->AddVariable("track3StartDirX", 'F');
+   //dataloader->AddVariable("track3StartDirY", 'F');
+   //dataloader->AddVariable("track3StartDirZ", 'F');
+   //dataloader->AddVariable("shower1DirX", 'F');
+   //dataloader->AddVariable("shower1DirY", 'F');
+   //dataloader->AddVariable("shower1DirZ", 'F');
 
    // 4 distances to reco vtx
-   dataloader->AddVariable("track1DistRecoVtx", 'F');
-   dataloader->AddVariable("track2DistRecoVtx", 'F');
-   dataloader->AddVariable("track3DistRecoVtx", 'F');
-   dataloader->AddVariable("shower1DistRecoVtx", 'F');
+   //dataloader->AddVariable("track1DistRecoVtx", 'F');
+   //dataloader->AddVariable("track2DistRecoVtx", 'F');
+   //dataloader->AddVariable("track3DistRecoVtx", 'F');
+   //dataloader->AddVariable("shower1DistRecoVtx", 'F');
 
    // 6 relative angles
-   dataloader->AddVariable("track1Track2Angle", 'F');
-   dataloader->AddVariable("track1Track3Angle", 'F');
-   dataloader->AddVariable("track2Track3Angle", 'F');
-   dataloader->AddVariable("track1Shower1Angle", 'F');
-   dataloader->AddVariable("track2Shower1Angle", 'F');
-   dataloader->AddVariable("track3Shower1Angle", 'F');
+   //dataloader->AddVariable("track1Track2Angle", 'F');
+   //dataloader->AddVariable("track1Track3Angle", 'F');
+   //dataloader->AddVariable("track2Track3Angle", 'F');
+   //dataloader->AddVariable("track1Shower1Angle", 'F');
+   //dataloader->AddVariable("track2Shower1Angle", 'F');
+   //dataloader->AddVariable("track3Shower1Angle", 'F');
 
    // 6 relative distances
-   dataloader->AddVariable("track1Track2Dist", 'F');
-   dataloader->AddVariable("track1Track3Dist", 'F');
-   dataloader->AddVariable("track2Track3Dist", 'F');
-   dataloader->AddVariable("track1Shower1Dist", 'F');
-   dataloader->AddVariable("track2Shower1Dist", 'F');
+   //dataloader->AddVariable("track1Track2Dist", 'F');
+   //dataloader->AddVariable("track1Track3Dist", 'F');
+   //dataloader->AddVariable("track2Track3Dist", 'F');
+   //dataloader->AddVariable("track1Shower1Dist", 'F');
+   //dataloader->AddVariable("track2Shower1Dist", 'F');
    dataloader->AddVariable("track3Shower1Dist", 'F');
 
    // total = 6 + 6 + 4 + 12 + 12 + 4 = 44 variables
@@ -324,8 +324,8 @@ int TMVAClassification( TString myMethodList = "" )
    // it is possible to preset ranges in the option string in which the cut optimisation should be done:
    // "...:CutRangeMin[2]=-1:CutRangeMax[2]=1"...", where [2] is the third input variable
  
-/*   // Cut optimisation
-   if (Use["Cuts"])
+   // Cut optimisation
+/*   if (Use["Cuts"])
       factory->BookMethod( dataloader, TMVA::Types::kCuts, "Cuts",
                            "!H:!V:FitMethod=MC:EffSel:SampleSize=200000:VarProp=FSmart" );
  
@@ -344,9 +344,9 @@ int TMVAClassification( TString myMethodList = "" )
    if (Use["CutsSA"])
       factory->BookMethod( dataloader, TMVA::Types::kCuts, "CutsSA",
                            "!H:!V:FitMethod=SA:EffSel:MaxCalls=150000:KernelTemp=IncAdaptive:InitialTemp=1e+6:MinTemp=1e-6:Eps=1e-10:UseDefaultScale" );
- */
+*/
    // Likelihood ("naive Bayes estimator")
-   if (Use["Likelihood"])
+  if (Use["Likelihood"])
       factory->BookMethod( dataloader, TMVA::Types::kLikelihood, "Likelihood",
                            "H:!V:TransformOutput:PDFInterpol=Spline2:NSmoothSig[0]=20:NSmoothBkg[0]=20:NSmoothBkg[1]=10:NSmooth=1:NAvEvtPerBin=50" );
  
@@ -375,7 +375,7 @@ int TMVAClassification( TString myMethodList = "" )
    //
    //      "!H:!V:VolumeRangeMode=MinMax:DeltaFrac=0.2:KernelEstimator=Gauss:GaussSigma=0.3" );
    //      "!H:!V:VolumeRangeMode=RMS:DeltaFrac=3:KernelEstimator=Gauss:GaussSigma=0.3" );
- /*  if (Use["PDERS"])
+/*   if (Use["PDERS"])
       factory->BookMethod( dataloader, TMVA::Types::kPDERS, "PDERS",
                            "!H:!V:NormTree=T:VolumeRangeMode=Adaptive:KernelEstimator=Gauss:GaussSigma=0.3:NEventsMin=400:NEventsMax=600" );
  
@@ -395,12 +395,12 @@ int TMVAClassification( TString myMethodList = "" )
    if (Use["PDEFoamBoost"])
       factory->BookMethod( dataloader, TMVA::Types::kPDEFoam, "PDEFoamBoost",
                            "!H:!V:Boost_Num=30:Boost_Transform=linear:SigBgSeparate=F:MaxDepth=4:UseYesNoCell=T:DTLogic=MisClassificationError:FillFoamWithOrigWeights=F:TailCut=0:nActiveCells=500:nBin=20:Nmin=400:Kernel=None:Compress=T" );
-*/ 
+ */
    // K-Nearest Neighbour classifier (KNN)
    if (Use["KNN"])
       factory->BookMethod( dataloader, TMVA::Types::kKNN, "KNN",
                            "H:nkNN=20:ScaleFrac=0.8:SigmaFact=1.0:Kernel=Gaus:UseKernel=F:UseWeight=T:!Trim" );
- 
+
    // H-Matrix (chi2-squared) method
    if (Use["HMatrix"])
       factory->BookMethod( dataloader, TMVA::Types::kHMatrix, "HMatrix", "!H:!V:VarTransform=None" );
@@ -423,7 +423,7 @@ int TMVAClassification( TString myMethodList = "" )
                            "H:!V:Boost_Num=20:Boost_Transform=log:Boost_Type=AdaBoost:Boost_AdaBoostBeta=0.2:!Boost_DetailedMonitoring" );
  
    // Function discrimination analysis (FDA) -- test of various fitters - the recommended one is Minuit (or GA or SA)
-  /* if (Use["FDA_MC"])
+/*   if (Use["FDA_MC"])
       factory->BookMethod( dataloader, TMVA::Types::kFDA, "FDA_MC",
                            "H:!V:Formula=(0)+(1)*x0+(2)*x1+(3)*x2+(4)*x3:ParRanges=(-1,1);(-10,10);(-10,10);(-10,10);(-10,10):FitMethod=MC:SampleSize=100000:Sigma=0.1" );
  
@@ -446,9 +446,9 @@ int TMVAClassification( TString myMethodList = "" )
    if (Use["FDA_MCMT"])
       factory->BookMethod( dataloader, TMVA::Types::kFDA, "FDA_MCMT",
                            "H:!V:Formula=(0)+(1)*x0+(2)*x1+(3)*x2+(4)*x3:ParRanges=(-1,1);(-10,10);(-10,10);(-10,10);(-10,10):FitMethod=MC:Converger=MINUIT:ErrorLevel=1:PrintLevel=-1:FitStrategy=0:!UseImprove:!UseMinos:SetBatch:SampleSize=20" );
- 
-  */ // TMVA ANN: MLP (recommended ANN) -- all ANNs in TMVA are Multilayer Perceptrons
- /*  if (Use["MLP"])
+ */
+   // TMVA ANN: MLP (recommended ANN) -- all ANNs in TMVA are Multilayer Perceptrons
+   if (Use["MLP"])
       factory->BookMethod( dataloader, TMVA::Types::kMLP, "MLP", "H:!V:NeuronType=tanh:VarTransform=N:NCycles=600:HiddenLayers=N+5:TestRate=5:!UseRegulator" );
  
    if (Use["MLPBFGS"])
@@ -457,9 +457,9 @@ int TMVAClassification( TString myMethodList = "" )
    if (Use["MLPBNN"])
       factory->BookMethod( dataloader, TMVA::Types::kMLP, "MLPBNN", "H:!V:NeuronType=tanh:VarTransform=N:NCycles=60:HiddenLayers=N+5:TestRate=5:TrainingMethod=BFGS:UseRegulator" ); // BFGS training with bayesian regulators
  
- */
- /*  // Multi-architecture DNN implementation.
-   if (Use["DNN_CPU"] or Use["DNN_GPU"]) {
+ 
+   // Multi-architecture DNN implementation.
+ /*  if (Use["DNN_CPU"] or Use["DNN_GPU"]) {
       // General layout.
       TString layoutString ("Layout=TANH|128,TANH|128,TANH|128,LINEAR");
  
@@ -487,19 +487,19 @@ int TMVAClassification( TString myMethodList = "" )
          factory->BookMethod(dataloader, TMVA::Types::kDL, "DNN_CPU", cpuOptions);
       }
    }
- */
- /*  // CF(Clermont-Ferrand)ANN
+ 
+   // CF(Clermont-Ferrand)ANN
    if (Use["CFMlpANN"])
       factory->BookMethod( dataloader, TMVA::Types::kCFMlpANN, "CFMlpANN", "!H:!V:NCycles=200:HiddenLayers=N+1,N"  ); // n_cycles:#nodes:#nodes:...
  
    // Tmlp(Root)ANN
    if (Use["TMlpANN"])
       factory->BookMethod( dataloader, TMVA::Types::kTMlpANN, "TMlpANN", "!H:!V:NCycles=200:HiddenLayers=N+1,N:LearningMethod=BFGS:ValidationFraction=0.3"  ); // n_cycles:#nodes:#nodes:...
- 
+ */
    // Support Vector Machine
    if (Use["SVM"])
       factory->BookMethod( dataloader, TMVA::Types::kSVM, "SVM", "Gamma=0.25:Tol=0.001:VarTransform=Norm" );
- */
+ 
    // Boosted Decision Trees
    if (Use["BDTG"]) // Gradient Boost
       factory->BookMethod( dataloader, TMVA::Types::kBDT, "BDTG",
@@ -572,5 +572,5 @@ int main( int argc, char** argv )
       if (!methodList.IsNull()) methodList += TString(",");
       methodList += regMethod;
    }
-   return TMVAClassification(methodList);
+   return TMVAClassification_5(methodList);
 }
