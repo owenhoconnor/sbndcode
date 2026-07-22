@@ -1,14 +1,14 @@
-#define varPrep_cxx
-#include "varPrep.h"
+#define tmvaPrep_cxx
+#include "tmvaPrep.h"
 #include <TH2.h>
 #include <TStyle.h>
 #include <TCanvas.h>
 
-void varPrep::Loop()
+void tmvaPrep::Loop()
 {
 //   In a ROOT session, you can do:
-//      root> .L varPrep.C
-//      root> varPrep t
+//      root> .L tmvaPrep.C
+//      root> tmvaPrep t
 //      root> t.GetEntry(12); // Fill t data members with entry number 12
 //      root> t.Show();       // Show values of entry 12
 //      root> t.Show(16);     // Read and show values of entry 16
@@ -33,7 +33,7 @@ void varPrep::Loop()
 
    // Create new files and TTrees 
  
-   TFile *sigFile = new TFile("prepSig.root", "RECREATE");
+   TFile *sigFile = new TFile("/data/ooconnor/sbnd/hyperons/preselection_output/tmvaSample_sig.root", "RECREATE");
    TTree *sigTree = new TTree("sigTree", "signalTree");
    sigTree->SetDirectory(sigFile);
 
@@ -153,7 +153,7 @@ void varPrep::Loop()
    sigTree->Branch("track3Shower1Dist", &track3Shower1Dist);
 
    // Clone tree structure for background TTree
-   TFile *bkgFile = new TFile("prepBkg.root", "RECREATE");
+   TFile *bkgFile = new TFile("/data/ooconnor/sbnd/hyperons/preselection_output/tmvaSample_bkg.root", "RECREATE");
    TTree *bkgTree = sigTree->CloneTree(0);
    bkgTree->SetName("bkgTree");
    bkgTree->SetTitle("Background Tree");

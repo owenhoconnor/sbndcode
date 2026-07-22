@@ -5,8 +5,8 @@
 // found on file: TreeS.root
 //////////////////////////////////////////////////////////
 
-#ifndef varPrep_h
-#define varPrep_h
+#ifndef tmvaPrep_h
+#define tmvaPrep_h
 
 #include <TROOT.h>
 #include <TChain.h>
@@ -16,7 +16,7 @@
 #include "vector"
 #include "vector"
 
-class varPrep {
+class tmvaPrep {
 public :
    TTree          *fChain;   //!pointer to the analyzed TTree or TChain
    Int_t           fCurrent; //!current Tree number in a TChain
@@ -141,8 +141,8 @@ public :
    TBranch        *b_pfpPDG;   //!
    TBranch        *b_sampleType;   //!
 
-   varPrep(TTree *tree=0);
-   virtual ~varPrep();
+   tmvaPrep(TTree *tree=0);
+   virtual ~tmvaPrep();
    virtual Int_t    Cut(Long64_t entry);
    virtual Int_t    GetEntry(Long64_t entry);
    virtual Long64_t LoadTree(Long64_t entry);
@@ -154,8 +154,8 @@ public :
 
 #endif
 
-#ifdef varPrep_cxx
-varPrep::varPrep(TTree *tree) : fChain(0) 
+#ifdef tmvaPrep_cxx
+tmvaPrep::tmvaPrep(TTree *tree) : fChain(0) 
 {
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
@@ -170,19 +170,19 @@ varPrep::varPrep(TTree *tree) : fChain(0)
    Init(tree);
 }
 
-varPrep::~varPrep()
+tmvaPrep::~tmvaPrep()
 {
    if (!fChain) return;
    delete fChain->GetCurrentFile();
 }
 
-Int_t varPrep::GetEntry(Long64_t entry)
+Int_t tmvaPrep::GetEntry(Long64_t entry)
 {
 // Read contents of entry.
    if (!fChain) return 0;
    return fChain->GetEntry(entry);
 }
-Long64_t varPrep::LoadTree(Long64_t entry)
+Long64_t tmvaPrep::LoadTree(Long64_t entry)
 {
 // Set the environment to read one entry
    if (!fChain) return -5;
@@ -195,7 +195,7 @@ Long64_t varPrep::LoadTree(Long64_t entry)
    return centry;
 }
 
-void varPrep::Init(TTree *tree)
+void tmvaPrep::Init(TTree *tree)
 {
    // The Init() function is called when the selector needs to initialize
    // a new tree or chain. Typically here the branch addresses and branch
@@ -315,7 +315,7 @@ void varPrep::Init(TTree *tree)
    Notify();
 }
 
-bool varPrep::Notify()
+bool tmvaPrep::Notify()
 {
    // The Notify() function is called when a new file is opened. This
    // can be for a new TTree in a TChain. It is normally not necessary to make changes
@@ -325,18 +325,18 @@ bool varPrep::Notify()
    return true;
 }
 
-void varPrep::Show(Long64_t entry)
+void tmvaPrep::Show(Long64_t entry)
 {
 // Print contents of entry.
 // If entry is not specified, print current entry
    if (!fChain) return;
    fChain->Show(entry);
 }
-Int_t varPrep::Cut(Long64_t entry)
+Int_t tmvaPrep::Cut(Long64_t entry)
 {
 // This function may be called from Loop.
 // returns  1 if entry is accepted.
 // returns -1 otherwise.
    return 1;
 }
-#endif // #ifdef varPrep_cxx
+#endif // #ifdef tmvaPrep_cxx
