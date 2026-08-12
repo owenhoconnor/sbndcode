@@ -1,6 +1,6 @@
 #!/bin/bash
 
-#SBATCH --job-name=Hyperons_analyzer
+#SBATCH --job-name=Hyperons_analyzer-NEW
 #SBATCH --output=/data/ooconnor/slurm_logs/hyperons/new_logic/lar_%a.out # Where log files for each job end up
 #SBATCH --error=/data/ooconnor/slurm_logs/hyperons/new_logic/lar_%a.err # Where err files for each job end up
 #SBATCH --array=0-999%100
