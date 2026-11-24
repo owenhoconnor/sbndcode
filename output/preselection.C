@@ -107,6 +107,8 @@ PreselectionResults preselection::Loop(const PreselectionCuts& cuts)
         results.cutPatterns[pattern][category].fill(weight);
     }
 
+    // Define cut stages and sample categories for output.
+    // Next: Lambda invariant mass
     const char* stageNames[kNStages] = {
         "Initial", "RecoFV", "nuScore", "BCFM", "FlashTime", "Tracks", "Showers"
     };
@@ -114,8 +116,7 @@ PreselectionResults preselection::Loop(const PreselectionCuts& cuts)
         "Signal", "Other Hyperons", "Beam", "Dirt", "Cosmic"
     };
 
-    std::cout << std::setprecision(10)
-              << "\n=== CUMULATIVE CUT FLOW (expected events / 1e21 POT) ===\n";
+    std::cout << std::setprecision(10) << "\n=== CUMULATIVE CUT FLOW (expected events / 1e21 POT) ===\n";
     for (int stage = 0; stage < kNStages; ++stage) {
         std::cout << "\n" << stageNames[stage] << ":\n";
         for (int sample = 0; sample < kNSamples; ++sample) {
