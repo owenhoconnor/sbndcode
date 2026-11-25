@@ -1,8 +1,8 @@
 //////////////////////////////////////////////////////////
 // This class has been automatically generated on
-// Thu Mar 12 18:21:47 2026 by ROOT version 6.38.00
-// from TTree preTree/Output TTree
-// found on file: TreeS.root
+// Wed Aug 12 19:41:40 2026 by ROOT version 6.40.02
+// from TTree tree/Output TTree
+// found on file: /data/ooconnor/sbnd/hyperons/preselection_output/new_logic/signalDef_output_bkg.root
 //////////////////////////////////////////////////////////
 
 #ifndef tmvaPrep_h
@@ -15,31 +15,81 @@
 // Header file for the classes stored in the TTree if any.
 #include "vector"
 #include "vector"
+#include "vector"
 
 class tmvaPrep {
 public :
-   TTree          *fChain;   //!pointer to the analyzed TTree or TChain
-   Int_t           fCurrent; //!current Tree number in a TChain
+   TTree          *fChain;   ///<!pointer to the analyzed TTree or TChain
+   Int_t           fCurrent; ///<!current Tree number in a TChain
 
 // Fixed size dimensions of array or collections stored in the TTree if any.
 
    // Declaration of leaf types
    UInt_t          eventID;
-   vector<float>   *trueP;
-   vector<int>     *truePDG;
-   vector<int>     *daughterPDG;
-   vector<int>     *motherPDG;
-   vector<float>   *vertexX;
-   vector<float>   *vertexY;
-   vector<float>   *vertexZ;
-   vector<int>     *vertexSize;
-   vector<int>     *daughterSize;
-   Float_t         isoVertexX;
-   Float_t         isoVertexY;
-   Float_t         isoVertexZ;
-   vector<int>     *trueIntType;
-   vector<int>     *trueIntMode;
+   Int_t           run;
+   Int_t           subrun;
+   vector<int> *trueOrigin;
+   vector<float> *trueW;
+   vector<float> *trueX;
+   vector<float> *trueY;
+   vector<float> *trueQSqr;
+   vector<float> *truePt;
+   vector<float> *trueTheta;
+   vector<int>     *trueNuPDG;
+   vector<int>     *trueNuTrackID;
+   vector<float>   *trueNuVtxX;
+   vector<float>   *trueNuVtxY;
+   vector<float>   *trueNuVtxZ;
+   vector<float>     *trueNuEnergy;
    vector<int>     *trueCCNC;
+   vector<int>     *trueIntMode;
+   vector<int>     *trueIntType;
+   vector<int>     *trueTargetPDG;
+   vector<int>     *truePDG;
+   vector<int>     *trueTrackID;
+   vector<int>     *trueMotherPDG;
+   vector<int>     *trueMotherTrackID;
+   vector<int>     *trueGeneration;
+   vector<int>     *trueIsPrimary;
+   vector<int>     *trueIsDecayProduct;
+   vector<int>     *trueMCTruthIndex;
+   vector<float>   *trueP;
+   vector<float>   *trueMass;
+   vector<float>   *trueStartX;
+   vector<float>   *trueStartY;
+   vector<float>   *trueStartZ;
+   vector<float>   *trueStartT;
+   vector<float>   *truePx;
+   vector<float>   *truePy;
+   vector<float>   *truePz;
+   vector<float>   *trueE;
+   vector<float>   *trueEndX;
+   vector<float>   *trueEndY;
+   vector<float>   *trueEndZ;
+   vector<float>   *trueEndT;
+   vector<float>   *trueEndPx;
+   vector<float>   *trueEndPy;
+   vector<float>   *trueEndPz;
+   vector<float>   *trueEndE;
+   vector<int>     *trueNTrajectoryPoints;
+   vector<float>   *trueTrajectoryLength;
+   vector<string>  *trueProcess;
+   vector<string>  *trueEndProcess;
+   vector<int>     *trueStatusCode;
+   vector<int>     *trueNDaughters;
+   vector<int>     *trueNStoredDecayDaughters;
+   vector<int>     *trueNPrimaryParticles;
+   vector<int>     *trueNSavedParticles;
+   vector<int>     *trueParticleStartIndex;
+   vector<int>     *sliceID;
+   vector<float>   *sliceNuScore;
+   vector<int>     *sliceTotalHits;
+   vector<int>     *sliceTrueNuHits;
+   vector<int>     *sliceTrueOrigin;
+   Int_t           eventTotalTrueNuHits;
+   vector<float>   *sliceVtxX;
+   vector<float>   *sliceVtxY;
+   vector<float>   *sliceVtxZ;
    Int_t           nPFParticles;
    Int_t           nPrimaryChildren;
    Int_t           trackCount;
@@ -80,74 +130,121 @@ public :
    vector<float>   *showerDirX;
    vector<float>   *showerDirY;
    vector<float>   *showerDirZ;
-   vector<int>     *pfpTrackPDG;
-   vector<int>     *pfpShowerPDG;
    vector<int>     *pfpPDG;
    Int_t           sampleType;
-   Int_t           chosenMCTruthIdx;
+   Int_t           chosenTruthIdx;
+   Int_t           nuSliceIdx;
 
    // List of branches
-   TBranch        *b_eventID;   //!
-   TBranch        *b_trueP;   //!
-   TBranch        *b_truePDG;   //!
-   TBranch        *b_daughterPDG;   //!
-   TBranch        *b_motherPDG;   //!
-   TBranch        *b_vertexX;   //!
-   TBranch        *b_vertexY;   //!
-   TBranch        *b_vertexZ;   //!
-   TBranch        *b_vertexSize;   //!
-   TBranch        *b_daughterSize;   //!
-   TBranch        *b_isoVertexX;   //!
-   TBranch        *b_isoVertexY;   //!
-   TBranch        *b_isoVertexZ;   //!
-   TBranch        *b_trueIntType;  //!
-   TBranch        *b_trueIntMode;  //!
-   TBranch        *b_trueCCNC;     //!
-   TBranch        *b_nPFParticles;   //!
-   TBranch        *b_nPrimaryChildren;   //!
-   TBranch        *b_trackCount;   //!
-   TBranch        *b_showerCount;   //!
-   TBranch        *b_TrackIDs;   //!
-   TBranch        *b_trackLengths;   //!
-   TBranch        *b_RecoVertexX;   //!
-   TBranch        *b_RecoVertexY;   //!
-   TBranch        *b_RecoVertexZ;   //!
-   TBranch        *b_DistanceToRecoVertex;   //!
-   TBranch        *b_nuScores;   //!
-   TBranch        *b_trackScores;   //!
-   TBranch        *b_muonTrackScores;   //!
-   TBranch        *b_protonTrackScores;   //!
-   TBranch        *b_pionTrackScores;   //!
-   TBranch        *b_NeutrinoNuScores;   //!
-   TBranch        *b_trackStartPositionX;   //!
-   TBranch        *b_trackStartPositionY;   //!
-   TBranch        *b_trackStartPositionZ;   //!
-   TBranch        *b_trackEndPositionX;   //!
-   TBranch        *b_trackEndPositionY;   //!
-   TBranch        *b_trackEndPositionZ;   //!
-   TBranch        *b_trackStartDirX;   //!
-   TBranch        *b_trackStartDirY;   //!
-   TBranch        *b_trackStartDirZ;   //!
-   TBranch        *b_trackEndDirX;   //!
-   TBranch        *b_trackEndDirY;   //!
-   TBranch        *b_trackEndDirZ;   //!
-   TBranch        *b_trackVertexDirX;   //!
-   TBranch        *b_trackVertexDirY;   //!
-   TBranch        *b_trackVertexDirZ;   //!
-   TBranch        *b_trackTheta;   //!
-   TBranch        *b_trackPhi;   //!
-   TBranch        *b_showerLengths;   //!
-   TBranch        *b_showerStartPositionX;   //!
-   TBranch        *b_showerStartPositionY;   //!
-   TBranch        *b_showerStartPositionZ;   //!
-   TBranch        *b_showerDirX;   //!
-   TBranch        *b_showerDirY;   //!
-   TBranch        *b_showerDirZ;   //!
-   TBranch        *b_pfpTrackPDG;   //!
-   TBranch        *b_pfpShowerPDG;   //!
-   TBranch        *b_pfpPDG;   //!
-   TBranch        *b_sampleType;   //!
-   TBranch        *b_chosenMCTruthIdx;   //!
+   TBranch        *b_eventID;   ///<!
+   TBranch        *b_run;   ///<!
+   TBranch        *b_subrun;   ///<!
+   TBranch        *b_trueOrigin; ///<!
+   TBranch        *b_trueW;      ///<!
+   TBranch        *b_trueX;      ///<!
+   TBranch        *b_trueY;      ///<!
+   TBranch        *b_trueQSqr;   ///<!
+   TBranch        *b_truePt;     ///<!
+   TBranch        *b_trueTheta;  ///<!
+   TBranch        *b_trueNuPDG;   ///<!
+   TBranch        *b_trueNuTrackID;   ///<!
+   TBranch        *b_trueNuVtxX;   ///<!
+   TBranch        *b_trueNuVtxY;   ///<!
+   TBranch        *b_trueNuVtxZ;   ///<!
+   TBranch        *b_trueNuEnergy;   ///<!
+   TBranch        *b_trueCCNC;   ///<!
+   TBranch        *b_trueIntMode;   ///<!
+   TBranch        *b_trueIntType;   ///<!
+   TBranch        *b_trueTargetPDG;   ///<!
+   TBranch        *b_truePDG;   ///<!
+   TBranch        *b_trueTrackID;   ///<!
+   TBranch        *b_trueMotherPDG;   ///<!
+   TBranch        *b_trueMotherTrackID;   ///<!
+   TBranch        *b_trueGeneration;   ///<!
+   TBranch        *b_trueIsPrimary;   ///<!
+   TBranch        *b_trueIsDecayProduct;   ///<!
+   TBranch        *b_trueMCTruthIndex;   ///<!
+   TBranch        *b_trueP;   ///<!
+   TBranch        *b_trueMass;   ///<!
+   TBranch        *b_trueStartX;   ///<!
+   TBranch        *b_trueStartY;   ///<!
+   TBranch        *b_trueStartZ;   ///<!
+   TBranch        *b_trueStartT;   ///<!
+   TBranch        *b_truePx;   ///<!
+   TBranch        *b_truePy;   ///<!
+   TBranch        *b_truePz;   ///<!
+   TBranch        *b_trueE;   ///<!
+   TBranch        *b_trueEndX;   ///<!
+   TBranch        *b_trueEndY;   ///<!
+   TBranch        *b_trueEndZ;   ///<!
+   TBranch        *b_trueEndT;   ///<!
+   TBranch        *b_trueEndPx;   ///<!
+   TBranch        *b_trueEndPy;   ///<!
+   TBranch        *b_trueEndPz;   ///<!
+   TBranch        *b_trueEndE;   ///<!
+   TBranch        *b_trueNTrajectoryPoints;   ///<!
+   TBranch        *b_trueTrajectoryLength;   ///<!
+   TBranch        *b_trueProcess;   ///<!
+   TBranch        *b_trueEndProcess;   ///<!
+   TBranch        *b_trueStatusCode;   ///<!
+   TBranch        *b_trueNDaughters;   ///<!
+   TBranch        *b_trueNStoredDecayDaughters;   ///<!
+   TBranch        *b_trueNPrimaryParticles;   ///<!
+   TBranch        *b_trueNSavedParticles;   ///<!
+   TBranch        *b_trueParticleStartIndex;   ///<!
+   TBranch        *b_sliceID;        ///<!
+   TBranch        *b_sliceNuScore;   ///<!
+   TBranch        *b_sliceTotalHits; ///<!
+   TBranch        *b_sliceTrueNuHits; ///<!
+   TBranch        *b_sliceTrueOrigin; ///<!
+   TBranch        *b_eventTotalTrueNuHits; ///<!
+   TBranch        *b_sliceVtxX;      ///<!
+   TBranch        *b_sliceVtxY;       ///<!
+   TBranch        *b_sliceVtxZ;      ///<!
+   TBranch        *b_nPFParticles;   ///<!
+   TBranch        *b_nPrimaryChildren;   ///<!
+   TBranch        *b_trackCount;   ///<!
+   TBranch        *b_showerCount;   ///<!
+   TBranch        *b_TrackIDs;   ///<!
+   TBranch        *b_trackLengths;   ///<!
+   TBranch        *b_RecoVertexX;   ///<!
+   TBranch        *b_RecoVertexY;   ///<!
+   TBranch        *b_RecoVertexZ;   ///<!
+   TBranch        *b_DistanceToRecoVertex;   ///<!
+   TBranch        *b_nuScores;   ///<!
+   TBranch        *b_trackScores;   ///<!
+   TBranch        *b_muonTrackScores;   ///<!
+   TBranch        *b_protonTrackScores;   ///<!
+   TBranch        *b_pionTrackScores;   ///<!
+   TBranch        *b_NeutrinoNuScores;   ///<!
+   TBranch        *b_trackStartPositionX;   ///<!
+   TBranch        *b_trackStartPositionY;   ///<!
+   TBranch        *b_trackStartPositionZ;   ///<!
+   TBranch        *b_trackEndPositionX;   ///<!
+   TBranch        *b_trackEndPositionY;   ///<!
+   TBranch        *b_trackEndPositionZ;   ///<!
+   TBranch        *b_trackStartDirX;   ///<!
+   TBranch        *b_trackStartDirY;   ///<!
+   TBranch        *b_trackStartDirZ;   ///<!
+   TBranch        *b_trackEndDirX;   ///<!
+   TBranch        *b_trackEndDirY;   ///<!
+   TBranch        *b_trackEndDirZ;   ///<!
+   TBranch        *b_trackVertexDirX;   ///<!
+   TBranch        *b_trackVertexDirY;   ///<!
+   TBranch        *b_trackVertexDirZ;   ///<!
+   TBranch        *b_trackTheta;   ///<!
+   TBranch        *b_trackPhi;   ///<!
+   TBranch        *b_showerLengths;   ///<!
+   TBranch        *b_showerStartPositionX;   ///<!
+   TBranch        *b_showerStartPositionY;   ///<!
+   TBranch        *b_showerStartPositionZ;   ///<!
+   TBranch        *b_showerDirX;   ///<!
+   TBranch        *b_showerDirY;   ///<!
+   TBranch        *b_showerDirZ;   ///<!
+   TBranch        *b_pfpPDG;   ///<!
+   TBranch        *b_sampleType;   ///<!
+   TBranch        *b_chosenTruthIdx;   ///<!
+   TBranch        *b_nuSliceIdx; ///<!
 
    tmvaPrep(TTree *tree=0);
    virtual ~tmvaPrep();
@@ -168,11 +265,11 @@ tmvaPrep::tmvaPrep(TTree *tree) : fChain(0)
 // if parameter tree is not specified (or zero), connect the file
 // used to generate this class and read the Tree.
    if (tree == 0) {
-      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("TreeS.root");
+      TFile *f = (TFile*)gROOT->GetListOfFiles()->FindObject("/data/ooconnor/sbnd/hyperons/preselection_output/new_logic/signalDef_output_bkg.root");
       if (!f || !f->IsOpen()) {
-         f = new TFile("TreeS.root");
+         f = new TFile("/data/ooconnor/sbnd/hyperons/preselection_output/new_logic/signalDef_output_bkg.root");
       }
-      f->GetObject("preTree",tree);
+      f->GetObject("tree",tree);
 
    }
    Init(tree);
@@ -212,19 +309,68 @@ void tmvaPrep::Init(TTree *tree)
    // code, but the routine can be extended by the user if needed.
 
    // Set object pointer
-   trueP = 0;
-   truePDG = 0;
-   daughterPDG = 0;
-   motherPDG = 0;
-   vertexX = 0;
-   vertexY = 0;
-   vertexZ = 0;
-   vertexSize = 0;
-   daughterSize = 0;
-   TrackIDs = 0;
-   trueIntType = 0;
-   trueIntMode = 0;
+   trueOrigin = 0;
+   trueW = 0;
+   trueX = 0;
+   trueY = 0;
+   trueQSqr = 0;
+   truePt = 0;
+   trueTheta = 0;
+   trueNuPDG = 0;
+   trueNuTrackID = 0;
+   trueNuVtxX = 0;
+   trueNuVtxY = 0;
+   trueNuVtxZ = 0;
+   trueNuEnergy = 0;
    trueCCNC = 0;
+   trueIntMode = 0;
+   trueIntType = 0;
+   trueTargetPDG = 0;
+   truePDG = 0;
+   trueTrackID = 0;
+   trueMotherPDG = 0;
+   trueMotherTrackID = 0;
+   trueGeneration = 0;
+   trueIsPrimary = 0;
+   trueIsDecayProduct = 0;
+   trueMCTruthIndex = 0;
+   trueP = 0;
+   trueMass = 0;
+   trueStartX = 0;
+   trueStartY = 0;
+   trueStartZ = 0;
+   trueStartT = 0;
+   truePx = 0;
+   truePy = 0;
+   truePz = 0;
+   trueE = 0;
+   trueEndX = 0;
+   trueEndY = 0;
+   trueEndZ = 0;
+   trueEndT = 0;
+   trueEndPx = 0;
+   trueEndPy = 0;
+   trueEndPz = 0;
+   trueEndE = 0;
+   trueNTrajectoryPoints = 0;
+   trueTrajectoryLength = 0;
+   trueProcess = 0;
+   trueEndProcess = 0;
+   trueStatusCode = 0;
+   trueNDaughters = 0;
+   trueNStoredDecayDaughters = 0;
+   trueNPrimaryParticles = 0;
+   trueNSavedParticles = 0;
+   trueParticleStartIndex = 0;
+   sliceID = 0;
+   sliceNuScore = 0;
+   sliceTotalHits = 0;
+   sliceTrueNuHits = 0;
+   sliceTrueOrigin = 0;
+   sliceVtxX = 0;
+   sliceVtxY = 0;
+   sliceVtxZ = 0;
+   TrackIDs = 0;
    trackLengths = 0;
    DistanceToRecoVertex = 0;
    nuScores = 0;
@@ -257,8 +403,6 @@ void tmvaPrep::Init(TTree *tree)
    showerDirX = 0;
    showerDirY = 0;
    showerDirZ = 0;
-   pfpTrackPDG = 0;
-   pfpShowerPDG = 0;
    pfpPDG = 0;
    // Set branch addresses and branch pointers
    if (!tree) return;
@@ -267,21 +411,70 @@ void tmvaPrep::Init(TTree *tree)
    fChain->SetMakeClass(1);
 
    fChain->SetBranchAddress("eventID", &eventID, &b_eventID);
-   fChain->SetBranchAddress("trueP", &trueP, &b_trueP);
-   fChain->SetBranchAddress("truePDG", &truePDG, &b_truePDG);
-   fChain->SetBranchAddress("daughterPDG", &daughterPDG, &b_daughterPDG);
-   fChain->SetBranchAddress("motherPDG", &motherPDG, &b_motherPDG);
-   fChain->SetBranchAddress("vertexX", &vertexX, &b_vertexX);
-   fChain->SetBranchAddress("vertexY", &vertexY, &b_vertexY);
-   fChain->SetBranchAddress("vertexZ", &vertexZ, &b_vertexZ);
-   fChain->SetBranchAddress("vertexSize", &vertexSize, &b_vertexSize);
-   fChain->SetBranchAddress("daughterSize", &daughterSize, &b_daughterSize);
-   fChain->SetBranchAddress("isoVertexX", &isoVertexX, &b_isoVertexX);
-   fChain->SetBranchAddress("isoVertexY", &isoVertexY, &b_isoVertexY);
-   fChain->SetBranchAddress("isoVertexZ", &isoVertexZ, &b_isoVertexZ);
-   fChain->SetBranchAddress("trueIntType", &trueIntType, &b_trueIntType);
-   fChain->SetBranchAddress("trueIntMode", &trueIntMode, &b_trueIntMode);
+   fChain->SetBranchAddress("run", &run, &b_run);
+   fChain->SetBranchAddress("subrun", &subrun, &b_subrun);
+   fChain->SetBranchAddress("trueNuPDG", &trueNuPDG, &b_trueNuPDG);
+   fChain->SetBranchAddress("trueOrigin", &trueOrigin, &b_trueOrigin);
+   fChain->SetBranchAddress("trueW", &trueW, &b_trueW);
+   fChain->SetBranchAddress("trueX", &trueX, &b_trueX);
+   fChain->SetBranchAddress("trueY", &trueY, &b_trueY);
+   fChain->SetBranchAddress("trueQSqr", &trueQSqr, &b_trueQSqr);
+   fChain->SetBranchAddress("truePt", &truePt, &b_truePt);
+   fChain->SetBranchAddress("trueTheta", &trueTheta, &b_trueTheta);
+   fChain->SetBranchAddress("trueNuTrackID", &trueNuTrackID, &b_trueNuTrackID);
+   fChain->SetBranchAddress("trueNuVtxX", &trueNuVtxX, &b_trueNuVtxX);
+   fChain->SetBranchAddress("trueNuVtxY", &trueNuVtxY, &b_trueNuVtxY);
+   fChain->SetBranchAddress("trueNuVtxZ", &trueNuVtxZ, &b_trueNuVtxZ);
+   fChain->SetBranchAddress("trueNuEnergy", &trueNuEnergy, &b_trueNuEnergy);
    fChain->SetBranchAddress("trueCCNC", &trueCCNC, &b_trueCCNC);
+   fChain->SetBranchAddress("trueIntMode", &trueIntMode, &b_trueIntMode);
+   fChain->SetBranchAddress("trueIntType", &trueIntType, &b_trueIntType);
+   fChain->SetBranchAddress("trueTargetPDG", &trueTargetPDG, &b_trueTargetPDG);
+   fChain->SetBranchAddress("truePDG", &truePDG, &b_truePDG);
+   fChain->SetBranchAddress("trueTrackID", &trueTrackID, &b_trueTrackID);
+   fChain->SetBranchAddress("trueMotherPDG", &trueMotherPDG, &b_trueMotherPDG);
+   fChain->SetBranchAddress("trueMotherTrackID", &trueMotherTrackID, &b_trueMotherTrackID);
+   fChain->SetBranchAddress("trueGeneration", &trueGeneration, &b_trueGeneration);
+   fChain->SetBranchAddress("trueIsPrimary", &trueIsPrimary, &b_trueIsPrimary);
+   fChain->SetBranchAddress("trueIsDecayProduct", &trueIsDecayProduct, &b_trueIsDecayProduct);
+   fChain->SetBranchAddress("trueMCTruthIndex", &trueMCTruthIndex, &b_trueMCTruthIndex);
+   fChain->SetBranchAddress("trueP", &trueP, &b_trueP);
+   fChain->SetBranchAddress("trueMass", &trueMass, &b_trueMass);
+   fChain->SetBranchAddress("trueStartX", &trueStartX, &b_trueStartX);
+   fChain->SetBranchAddress("trueStartY", &trueStartY, &b_trueStartY);
+   fChain->SetBranchAddress("trueStartZ", &trueStartZ, &b_trueStartZ);
+   fChain->SetBranchAddress("trueStartT", &trueStartT, &b_trueStartT);
+   fChain->SetBranchAddress("truePx", &truePx, &b_truePx);
+   fChain->SetBranchAddress("truePy", &truePy, &b_truePy);
+   fChain->SetBranchAddress("truePz", &truePz, &b_truePz);
+   fChain->SetBranchAddress("trueE", &trueE, &b_trueE);
+   fChain->SetBranchAddress("trueEndX", &trueEndX, &b_trueEndX);
+   fChain->SetBranchAddress("trueEndY", &trueEndY, &b_trueEndY);
+   fChain->SetBranchAddress("trueEndZ", &trueEndZ, &b_trueEndZ);
+   fChain->SetBranchAddress("trueEndT", &trueEndT, &b_trueEndT);
+   fChain->SetBranchAddress("trueEndPx", &trueEndPx, &b_trueEndPx);
+   fChain->SetBranchAddress("trueEndPy", &trueEndPy, &b_trueEndPy);
+   fChain->SetBranchAddress("trueEndPz", &trueEndPz, &b_trueEndPz);
+   fChain->SetBranchAddress("trueEndE", &trueEndE, &b_trueEndE);
+   fChain->SetBranchAddress("trueNTrajectoryPoints", &trueNTrajectoryPoints, &b_trueNTrajectoryPoints);
+   fChain->SetBranchAddress("trueTrajectoryLength", &trueTrajectoryLength, &b_trueTrajectoryLength);
+   fChain->SetBranchAddress("trueProcess", &trueProcess, &b_trueProcess);
+   fChain->SetBranchAddress("trueEndProcess", &trueEndProcess, &b_trueEndProcess);
+   fChain->SetBranchAddress("trueStatusCode", &trueStatusCode, &b_trueStatusCode);
+   fChain->SetBranchAddress("trueNDaughters", &trueNDaughters, &b_trueNDaughters);
+   fChain->SetBranchAddress("trueNStoredDecayDaughters", &trueNStoredDecayDaughters, &b_trueNStoredDecayDaughters);
+   fChain->SetBranchAddress("trueNPrimaryParticles", &trueNPrimaryParticles, &b_trueNPrimaryParticles);
+   fChain->SetBranchAddress("trueNSavedParticles", &trueNSavedParticles, &b_trueNSavedParticles);
+   fChain->SetBranchAddress("trueParticleStartIndex", &trueParticleStartIndex, &b_trueParticleStartIndex);
+   fChain->SetBranchAddress("sliceID", &sliceID, &b_sliceID);
+   fChain->SetBranchAddress("sliceNuScore", &sliceNuScore, &b_sliceNuScore);
+   fChain->SetBranchAddress("sliceTotalHits", &sliceTotalHits, &b_sliceTotalHits);
+   fChain->SetBranchAddress("sliceTrueNuHits", &sliceTrueNuHits, &b_sliceTrueNuHits);
+   fChain->SetBranchAddress("sliceTrueOrigin", &sliceTrueOrigin, &b_sliceTrueOrigin);
+   fChain->SetBranchAddress("eventTotalTrueNuHits", &eventTotalTrueNuHits, &b_eventTotalTrueNuHits);
+   fChain->SetBranchAddress("sliceVtxX", &sliceVtxX, &b_sliceVtxX);
+   fChain->SetBranchAddress("sliceVtxY", &sliceVtxY, &b_sliceVtxY);
+   fChain->SetBranchAddress("sliceVtxZ", &sliceVtxZ, &b_sliceVtxZ);
    fChain->SetBranchAddress("nPFParticles", &nPFParticles, &b_nPFParticles);
    fChain->SetBranchAddress("nPrimaryChildren", &nPrimaryChildren, &b_nPrimaryChildren);
    fChain->SetBranchAddress("trackCount", &trackCount, &b_trackCount);
@@ -322,11 +515,10 @@ void tmvaPrep::Init(TTree *tree)
    fChain->SetBranchAddress("showerDirX", &showerDirX, &b_showerDirX);
    fChain->SetBranchAddress("showerDirY", &showerDirY, &b_showerDirY);
    fChain->SetBranchAddress("showerDirZ", &showerDirZ, &b_showerDirZ);
-   fChain->SetBranchAddress("pfpTrackPDG", &pfpTrackPDG, &b_pfpTrackPDG);
-   fChain->SetBranchAddress("pfpShowerPDG", &pfpShowerPDG, &b_pfpShowerPDG);
    fChain->SetBranchAddress("pfpPDG", &pfpPDG, &b_pfpPDG);
    fChain->SetBranchAddress("sampleType", &sampleType, &b_sampleType);
-   fChain->SetBranchAddress("chosenMCTruthIdx", &chosenMCTruthIdx, &b_chosenMCTruthIdx);
+   fChain->SetBranchAddress("chosenTruthIdx", &chosenTruthIdx, &b_chosenTruthIdx);
+   fChain->SetBranchAddress("nuSliceIdx", &nuSliceIdx, &b_nuSliceIdx);
    Notify();
 }
 

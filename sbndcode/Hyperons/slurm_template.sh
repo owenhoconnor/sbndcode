@@ -1,17 +1,18 @@
 #!/bin/bash
 
 #SBATCH --job-name=Hyperons_analyzer-NEW
-#SBATCH --output=/data/ooconnor/slurm_logs/hyperons/new_logic/lar_%a.out # Where log files for each job end up
-#SBATCH --error=/data/ooconnor/slurm_logs/hyperons/new_logic/lar_%a.err # Where err files for each job end up
+#SBATCH --output=/data/ooconnor/slurm_logs/hyperons/lar_%a.out # Where log files for each job end up
+#SBATCH --error=/data/ooconnor/slurm_logs/hyperons/lar_%a.err # Where err files for each job end up
 #SBATCH --array=0-999%100
 #SBATCH --nodes=1
 #SBATCH --ntasks=1
-#SBATCH --mem=10G
+#SBATCH --mem=3G
 #SBATCH --time=12:00:00
 
 # Define the relevant paths (CHANGE TO YOURS)
 INPUT_DIR="/data/sbnd/prod_2026"
-OUTPUT_DIR="/data/ooconnor/sbnd/hyperons/analyzer_output/new_logic/prod_2026"
+OUTPUT_DIR="/data/ooconnor/sbnd/hyperons/analyzer_output/prod_2026"
+LOG_DIR="/data/ooconnor/slurm_logs/hyperons/"
 WORK_DIR="$HOME/larsoft_dev/srcs/sbndcode/sbndcode/Hyperons"
 SETUP_LOCAL="$HOME/larsoft_dev/localProducts_larsoft_v10_21_02_prof_e26/setup"
 CONTAINER="/cvmfs/singularity.opensciencegrid.org/fermilab/fnal-dev-sl7:latest"
@@ -27,8 +28,10 @@ $APPTAINER_BIN exec -B /cvmfs,/data,/home,/opt,/run/user,/etc/hostname,/etc/host
     --ipc --pid "$CONTAINER" /bin/bash -c "
         source /cvmfs/sbnd.opensciencegrid.org/products/sbnd/setup_sbnd.sh
         source $SETUP_LOCAL
+	cd \$MRB_BUILDDIR
         mrbsetenv
         mrbslp
+	cd $WORK_DIR
 
         # Note: We use 'seq' to handle looking for files
         for (( i=$SLURM_ARRAY_TASK_ID; i<$NUM_FILES; i+=$NUM_JOBS )); do
@@ -46,10 +49,24 @@ $APPTAINER_BIN exec -B /cvmfs,/data,/home,/opt,/run/user,/etc/hostname,/etc/host
             # Run lar
             lar -c $WORK_DIR/run_analyzeEvents.fcl \
                 -s \$CURRENT_FILE \
-                -T analyser_output_\${i}_2026.root
+                -T analyzer_output_\${i}_2026.root
+
+            # Check for errors, rerun if any jobs failed
+
+            LAR_STATUS=\$?
+
+            if [ \$LAR_STATUS -ne 0 ]; then
+                echo \"lar failed for file \$i with exit code \$LAR_STATUS. Rerunning...\"
+
+                rm -f analyzer_output_\${i}_2026.root
+
+                lar -c $WORK_DIR/run_analyzeEvents.fcl \
+                -s \$CURRENT_FILE \
+                -T analyzer_output_\${i}_2026.root
+            fi
 
             # Move and clean (If neccessary)
-            mv analyser_output_\${i}_2026.root $OUTPUT_DIR/
+            mv analyzer_output_\${i}_2026.root $OUTPUT_DIR/
             cd $WORK_DIR
             rm -rf \$TMP_DIR
         done
