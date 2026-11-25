@@ -52,3 +52,6 @@ add_subdirectory(TPCPMTBarycenterMatching)
 
 add_subdirectory(BlipRecoSBND)
 add_subdirectory(LightPropagationCorrection)
+
+# for Hyperons
+add_subdirectory(Hyperons)
