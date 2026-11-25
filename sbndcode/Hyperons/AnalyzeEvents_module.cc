@@ -248,8 +248,8 @@ struct PFPTruthMatch
 };
 
 enum class TruthSource: int {
-    Beam = 0;
-    Corsika = 1;
+    Beam = 0,
+    Corsika = 1
 };
 
 } // anonymous namespace
@@ -1477,7 +1477,7 @@ if (evt.getByLabel(fGenieGenModuleLabel,beamTruthHandle)){
       art::fill_ptr_vector(beamTruths, beamTruthHandle);
 }
 
-art::FindManyP<simb::MCParticle> beamGeantAssoc( mctruthListHandle, evt, "largeant" );
+art::FindManyP<simb::MCParticle> beamGeantAssoc(beamTruthHandle, evt, "largeant" );
 
 /* // Get Cosmic MCTruth
 art::Handle<std::vector<simb::MCTruth>> cosmicTruthHandle;
